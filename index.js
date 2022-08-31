@@ -65,6 +65,17 @@ export class CL3 {
         return response;
     }
 
+    async payUplines(planName, cl3ContractAddress) {
+        const init = await this.initialize;
+        const response = await init.cwClient.execute(
+            init.walletAddress,
+            cl3ContractAddress,
+            { pay_uplines: { plan_name: planName } },
+            init.stdFee
+        );
+        return response;
+    }
+
     async buyTokens(amount, cl3ContractAddress) {
         const init = await this.initialize;
         const response = await init.cwClient.execute(

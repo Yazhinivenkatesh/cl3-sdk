@@ -1,5 +1,5 @@
 {
-  "name": "cl3",
+  "name": "cl3-sdk",
   "version": "1.0.0",
   "description": "sdk for easily integrating affiliate marketing in your application",
   "main": "index.js",
