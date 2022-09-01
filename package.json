@@ -1,5 +1,5 @@
 {
-  "name": "cl3-sdk",
+  "name": "cl3-affiliate",
   "version": "1.0.0",
   "description": "sdk for easily integrating affiliate marketing in your application",
   "main": "index.js",
@@ -11,7 +11,8 @@
   "dependencies": {
     "@cosmjs/cosmwasm-stargate": "^0.28.13",
     "@cosmjs/stargate": "^0.28.13",
-    "@cosmjs/tendermint-rpc": "^0.28.13"
+    "@cosmjs/tendermint-rpc": "^0.28.13",
+    "axios": "^0.27.2"
   },
   "repository": {
     "type": "git",
