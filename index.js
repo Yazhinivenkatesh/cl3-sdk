@@ -4,7 +4,6 @@ import {
 } from "@cosmjs/cosmwasm-stargate";
 import { GasPrice } from "@cosmjs/stargate";
 import { Tendermint34Client } from "@cosmjs/tendermint-rpc";
-import axios from "axios";
 export class CL3 {
     constructor(provider, walletAddress) {
 
@@ -32,13 +31,17 @@ export class CL3 {
         })();
     }
 
-    async contractDeployment(contract_name, params) {
-        try{
-            const response = await axios.post('http://localhost:9000/deploy', {contract_name, params})
-            return response.data;
-        }catch(err){
-            return err;
-        }
+    async deploy(wasm, instantiateMsg, label) {
+        const init = await this.initialize;
+        const { codeId } = await init.cwClient.upload(init.walletAddress, wasm, init.stdFee);
+        const { contractAddress } = await init.cwClient.instantiate(
+            init.walletAddress,
+            codeId,
+            instantiateMsg,
+            label,
+            init.stdFee
+        );
+        return contractAddress;
     }
 
     async addPlan(planName, price, cl3ContractAddress) {
